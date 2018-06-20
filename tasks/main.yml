@@ -5,8 +5,14 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Install Filebeat.
+- name: Install Filebeat Linux.
   package: name=filebeat state=present
+  when: ansible_os_family == 'Windows' or ansible_os_family == 'Debian'
+
+- name: Install Filebeat Windows
+  win_chocolately: 
+    name: filebeat
+    
 
 - include: config.yml
   when: filebeat_create_config
