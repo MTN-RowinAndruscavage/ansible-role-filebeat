@@ -1,5 +1,14 @@
 ---
 
+- name: Remove existing filebeat
+  win_chocolatey:
+    name: filebeat
+    version: "{{filebeat_version}}"
+    state: absent
+
+- name: Remove service
+  win_service: name=filebeat state=absent
+
 - name: Ensure filebeat is installed
   win_chocolatey:
     name: filebeat
