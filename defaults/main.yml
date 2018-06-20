@@ -21,7 +21,7 @@ filebeat_output_logstash_hosts:
 
 filebeat_enable_logging: false
 filebeat_log_level: warning
-filebeat_log_dir: "C:/ProgramData/chocolatey/lib/filebeat/logs"
+filebeat_log_dir: "{{ filebeat_base }}/logs"
 filebeat_log_filename: mybeat.log
 
 #filebeat_ssl_dir: ""
