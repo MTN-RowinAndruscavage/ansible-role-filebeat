@@ -1,7 +1,8 @@
 ---
 
-filebeat_dir: "C:/ProgramData/chocolatey/lib/filebeat"
 filebeat_version: "6.3.0"
+filebeat_base: "C:/ProgramData/chocolatey/lib/filebeat"
+filebeat_dir: "{{filebeat_dir}}/tools/filebeat-{{filebeat_version}}-windows-x86_64"
 filebeat_create_config: true
 
 #Default to IIS

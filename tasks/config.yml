@@ -3,7 +3,7 @@
 - name: Copy Filebeat configuration.
   win_template:
     src: filebeat.yml.j2
-    dest: "{{filebeat_dir}}/tools/filebeat-{{filebeat_version}}-windows/filebeat.yml"
+    dest: "{{filebeat_dir}}/filebeat.yml"
   notify: restart filebeat
 
 
