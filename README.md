@@ -27,9 +27,9 @@ Due to limitations, may refactor to use standard package install at some point.
 
 Added options and their defaults for Windows/Chocolately:
 
-filebeat_version: "6.3.0"
-filebeat_base: "C:/ProgramData/chocolatey/lib/filebeat"
-filebeat_dir: "{{ filebeat_base }}/tools/filebeat-{{ filebeat_version }}-windows-x86_64"
+    filebeat_version: "6.3.0"
+    filebeat_base: "C:/ProgramData/chocolatey/lib/filebeat"
+    filebeat_dir: "{{ filebeat_base }}/tools/filebeat-{{ filebeat_version }}-windows-x86_64"
 
 
 ## Windows Configuration:
