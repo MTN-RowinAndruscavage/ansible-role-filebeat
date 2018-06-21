@@ -7,8 +7,10 @@
     version: "{{filebeat_version}}"
     state: present
 
+
+
 - name: Ensure filebeat service is started
-  win_service: name=filebeat start_mode=auto state=started
+  win_service: name=filebeat start_mode=auto state=restarted
 
 - include: config.yml
   when: filebeat_create_config
