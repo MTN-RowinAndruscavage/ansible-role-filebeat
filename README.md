@@ -1,17 +1,6 @@
 
 # Modified Filebeat Role, forked from Jeff Geerling
 
-
-## Updated for Filebeat 6.x
-
-## Created a Windows branch
-
-## Added fine tuning for SSL for a generated filebeat.yml file.
-
-## Added following SSL options for the generated filebeat.yml file, for which there are no defaults provided:
-
-# Modified Filebeat Role, originally from Jeff Geerling
-
 # Windows Version
 
 ## Ansible Configuration
