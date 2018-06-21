@@ -1,6 +1,17 @@
 ---
 
 
+
+- name: Ensure filebeat service is started
+  win_service: name=filebeat state=absent
+
+
+- name: Ensure filebeat is installed
+  win_chocolatey:
+    name: filebeat
+    state: absent
+
+
 - name: Ensure filebeat is installed
   win_chocolatey:
     name: filebeat
