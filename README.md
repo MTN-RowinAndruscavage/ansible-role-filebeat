@@ -1,18 +1,55 @@
 # Modified Filebeat Role, originally from Jeff Geerling
 
+# Windows Version
 
-##Updated for Filebeat 6.x
+## Ansible Configuration
 
-##Created a Windows branch
+Chocolately appears to only install the latest version it is configured for.
 
-##Added fine tuning for SSL.
+Set filebeat version:
+https://chocolatey.org/packages/filebeat
 
-##Added following SSL options for the generated filebeat.yml file, for which there are no defaults provided:
+This must be set in the filebeat_version flag.
+
+Due to limitations, may refactor to use standard package install at some point.
+
+Added options and their defaults for Windows/Chocolately:
+
+filebeat_version: "6.3.0"
+filebeat_base: "C:/ProgramData/chocolatey/lib/filebeat"
+filebeat_dir: "{{ filebeat_base }}/tools/filebeat-{{ filebeat_version }}-windows-x86_64"
+
+
+## Windows Configuration:
+
+Get the latest version of ConfigureRemotingForAnsible.ps1 from https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
+Run this script as Administrator on  Windows machines.
+
+
+Follow instructions from :
+https://docs.ansible.com/ansible/2.5/user_guide/windows_winrm.html
+
+## Updates:
+
+### Updated for Filebeat 6.x
+
+### Created a Windows branch
+
+### Added fine tuning for SSL.
+
+# Note, currently NOT supporting 2-way SSL for Windows.
+
+## The following parameters are REMOVED:
+
+filebeat_ssl_dir 
+filebeat_ssl_certificate_file
+filebeat_ssl_key_file
+
+### Added following SSL options for the generated filebeat.yml file, for which there are no defaults provided:
 
 filebeat_ssl_certificate_authorities: #Collection
 filebeat_ssl_verification_mode: # none, full
 filebeat_ssl_renegotiation: #never, once, freely
-filebeat_ssl_key_passphrase:
 filebeat_ssl_supported_protocols: #Collection: [SSLv3, TLSv1, TLSv1.0, TLSv1.1, TLSv1.2]
 filebeat_ssl_cipher_suites: #Collection - See docs for available types
 filebeat_ssl_curve_types: #Collection - [P-256, P-384, P521]
