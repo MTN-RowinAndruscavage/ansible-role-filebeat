@@ -1,10 +1,15 @@
 ---
+
+filebeat_version: "6.3.0"
+filebeat_base: "C:/ProgramData/chocolatey/lib/filebeat"
+filebeat_dir: "{{ filebeat_base }}/tools/filebeat-{{ filebeat_version }}-windows-x86_64"
 filebeat_create_config: true
 
+#Default to IIS
 filebeat_prospectors:
   - input_type: log
     paths:
-      - "/var/log/*.log"
+      - "C:/inetpub/logs/LogFiles/*/*"
 
 filebeat_output_elasticsearch_enabled: false
 filebeat_output_elasticsearch_hosts:
@@ -16,17 +21,17 @@ filebeat_output_logstash_hosts:
 
 filebeat_enable_logging: false
 filebeat_log_level: warning
-filebeat_log_dir: /var/log/mybeat
+filebeat_log_dir: "{{ filebeat_base }}/logs"
 filebeat_log_filename: mybeat.log
 
-filebeat_ssl_dir: /etc/pki/logstash
-filebeat_ssl_certificate_file: ""
-filebeat_ssl_key_file: ""
+#filebeat_ssl_dir: ""
+#filebeat_ssl_certificate_file: ""
+#filebeat_ssl_key_file: ""
 filebeat_ssl_certificate_authorities: #Collection
-#  - "/etc/pki/root/ca.pem"
+#  - "C:\trust_store\ca.pem"
 filebeat_ssl_verification_mode: # none, full
 filebeat_ssl_renegotiation: #never, once, freely
-filebeat_ssl_key_passphrase:
+#filebeat_ssl_key_passphrase:
 filebeat_ssl_supported_protocols: #Collection: [SSLv3, TLSv1, TLSv1.0, TLSv1.1, TLSv1.2]
 filebeat_ssl_cipher_suites: #Collection - See docs for available types
 filebeat_ssl_curve_types: #Collection - [P-256, P-384, P521]

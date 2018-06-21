@@ -53,15 +53,6 @@ output:
 {% if filebeat_ssl_certificate_authorities %}
     ssl.certificate_authorities: {{ filebeat_ssl_certificate_authorities }}
 {% endif %}
-{% if filebeat_ssl_certificate_file and filebeat_ssl_key_file %}
-    # Certificate for TLS client authentication
-    ssl.certificate: "{{ filebeat_ssl_dir }}/{{ filebeat_ssl_certificate_file | basename }}"
-    # Client Certificate Key
-    ssl.certificate_key: "{{ filebeat_ssl_dir }}/{{ filebeat_ssl_key_file | basename}}"
-{% endif %}
-{% if filebeat_ssl_key_passphrase %}
-    ssl.key_passphrase: {{ filebeat_ssl_key_passphrase }}
-{% endif %}
 {% if filebeat_ssl_verification_mode %}
     ssl.verification_mode: {{ filebeat_ssl_verification_mode }}
 {% endif %}
@@ -97,15 +88,6 @@ output:
 {% endif %}
 {% if filebeat_ssl_certificate_authorities %}
     ssl.certificate_authorities: {{ filebeat_ssl_certificate_authorities | to_json }}
-{% endif %}
-{% if filebeat_ssl_certificate_file and filebeat_ssl_key_file %}
-    # Certificate for TLS client authentication
-    ssl.certificate: "{{ filebeat_ssl_dir }}/{{ filebeat_ssl_certificate_file | basename }}"
-    # Client Certificate Key
-    ssl.certificate_key: "{{ filebeat_ssl_dir }}/{{ filebeat_ssl_key_file | basename}}"
-{% endif %}
-{% if filebeat_ssl_key_passphrase %}
-    ssl.key_passphrase: {{ filebeat_ssl_key_passphrase }}
 {% endif %}
 {% if filebeat_ssl_verification_mode %}
     ssl.verification_mode: {{ filebeat_ssl_verification_mode }}
