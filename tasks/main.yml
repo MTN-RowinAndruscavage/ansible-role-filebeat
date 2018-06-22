@@ -1,5 +1,10 @@
 ---
 
+- name: Remove service
+  win_service:
+    name: filebeat
+    state: absent
+
 - name: Remove any previous filebeat
   win_file:
     path: "{{ filebeat_install_location }}"
@@ -15,24 +20,17 @@
     url: "{{ filebeat_download_url_base }}/{{ filebeat_download_file }}{{ file_ext }}"
     dest: "{{ filebeat_install_location }}/{{ filebeat_download_file }}{{ file_ext }}"
 
-
 - name: Unzip filebeat
   win_unzip:
     src: "{{ filebeat_install_location }}/{{ filebeat_download_file }}{{ file_ext }}"
     dest: "{{ filebeat_install_location }}"
 
+- name: Install the service via script
+  win_command: powershell.exe -ExecutionPolicy ByPass -File "{{ filebeat_install_location }}/{{ filebeat_download_file }}/install-service-filebeat.ps1"
+  args:
+    chdir: "{{ filebeat_install_location }}/{{ filebeat_download_file }}"
+
 - include: config.yml
   when: filebeat_create_config
 
 
-- name: Install the service via script
-  win_shell: "'{{ filebeat_install_location }}/{{ filebeat_download_file }}/install-service-filebeat.ps1'"
-  args:
-    chdir: "{{ filebeat_install_location }}/{{ filebeat_download_file }}"
-
-- name: Be sure service is started
-  win_service: 
-    name: filebeat
-    state: started
-#- include: config.yml
-#  when: filebeat_create_config

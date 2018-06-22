@@ -4,7 +4,7 @@
   win_template:
     src: filebeat.yml.j2
     dest: "{{ filebeat_install_location }}/{{ filebeat_download_file }}/filebeat.yml"
-#  notify: restart filebeat
+  notify: restart filebeat
 
 
 #Not using client SSL for Windows at this time
