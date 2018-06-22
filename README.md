@@ -9,10 +9,10 @@
 Added options and their defaults for Windows:
 
 
-filebeat_download_url_base: 'https://artifacts.elastic.co/downloads/beats/filebeat'
-file_ext: '.zip'
-filebeat_download_file: 'filebeat-6.3.0-windows-x86_64'
-filebeat_install_location: "C:/Program Files/Filebeat"
+    filebeat_download_url_base: 'https://artifacts.elastic.co/downloads/beats/filebeat'
+    file_ext: '.zip'
+    filebeat_download_file: 'filebeat-6.3.0-windows-x86_64'
+    filebeat_install_location: "C:/Program Files/Filebeat"
 
 
 ## Windows Configuration:
@@ -26,9 +26,7 @@ https://docs.ansible.com/ansible/2.5/user_guide/windows_winrm.html
 
 ## Updates:
 
-### Chocolately currently supports Filebeat 6.x
-
-### Created a Windows branch
+### Supports Filebeat 6.x
 
 ### Added fine tuning for SSL.
 
