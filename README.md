@@ -5,20 +5,14 @@
 
 ## Ansible Configuration
 
-Chocolately appears to only install the latest version it is configured for.
 
-Set filebeat version:
-https://chocolatey.org/packages/filebeat
+Added options and their defaults for Windows:
 
-This must be set in the filebeat_version flag.
 
-Due to limitations, may refactor to use standard package install at some point.
-
-Added options and their defaults for Windows/Chocolately:
-
-    filebeat_version: "6.3.0"
-    filebeat_base: "C:/ProgramData/chocolatey/lib/filebeat"
-    filebeat_dir: "{{ filebeat_base }}/tools/filebeat-{{ filebeat_version }}-windows-x86_64"
+filebeat_download_url_base: 'https://artifacts.elastic.co/downloads/beats/filebeat'
+file_ext: '.zip'
+filebeat_download_file: 'filebeat-6.3.0-windows-x86_64'
+filebeat_install_location: "C:/Program Files/Filebeat"
 
 
 ## Windows Configuration:
