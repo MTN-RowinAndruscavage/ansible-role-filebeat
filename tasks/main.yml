@@ -32,7 +32,7 @@
 
 - name: Be sure service is started
   win_service: 
-  name: filebeat
-  state: started
+    name: filebeat
+    state: started
 #- include: config.yml
 #  when: filebeat_create_config
