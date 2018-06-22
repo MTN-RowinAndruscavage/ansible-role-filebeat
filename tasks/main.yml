@@ -15,13 +15,15 @@
     url: "{{ filebeat_download_url_base }}/{{ filebeat_download_file }}{{ file_ext }}"
     dest: "{{ filebeat_install_location }}/{{ filebeat_download_file }}{{ file_ext }}"
 
-- include: config.yml
-  when: filebeat_create_config
 
 - name: Unzip filebeat
   win_unzip:
     src: "{{ filebeat_install_location }}/{{ filebeat_download_file }}{{ file_ext }}"
     dest: "{{ filebeat_install_location }}"
+
+- include: config.yml
+  when: filebeat_create_config
+
 
 - name: Install the service via script
   win_shell: "'{{ filebeat_install_location }}/{{ filebeat_download_file }}/install-service-filebeat.ps1'"
