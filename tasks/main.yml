@@ -15,6 +15,8 @@
     url: "{{ filebeat_download_url_base }}/{{ filebeat_download_file }}{{ file_ext }}"
     dest: "{{ filebeat_install_location }}/{{ filebeat_download_file }}{{ file_ext }}"
 
+- include: config.yml
+  when: filebeat_create_config
 
 - name: Unzip filebeat
   win_unzip:
@@ -26,5 +28,9 @@
   args:
     chdir: "{{ filebeat_install_location }}/{{ filebeat_download_file }}"
 
-- include: config.yml
-  when: filebeat_create_config
+- name: Be sure service is started
+  win_service: 
+  name: filebeat
+  state: started
+#- include: config.yml
+#  when: filebeat_create_config
