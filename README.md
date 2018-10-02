@@ -25,7 +25,7 @@
 
 # Ansible Role: Filebeat for ELK Stack
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-filebeat.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-filebeat)
+[![Build Status](https://travis-ci.org/MTN-RowinAndruscavage/ansible-role-filebeat.svg?branch=master)](https://travis-ci.org/MTN-RowinAndruscavage/ansible-role-filebeat)
 
 An Ansible Role that installs [Filebeat](https://www.elastic.co/products/beats/filebeat) on RedHat/CentOS or Debian/Ubuntu.
 
