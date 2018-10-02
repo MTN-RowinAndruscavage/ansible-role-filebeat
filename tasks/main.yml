@@ -5,9 +5,6 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Install Filebeat.
-  package: name=filebeat state=present
-
 - include: config.yml
   when: filebeat_create_config
 

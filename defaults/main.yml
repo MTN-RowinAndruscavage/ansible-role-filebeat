@@ -1,5 +1,9 @@
 ---
-filebeat_version: 6.4.1
+# Override to "latest" to upgrade
+filebeat_package_state: present
+
+## Not implemented
+# filebeat_version: 6.4.1
 
 filebeat_create_config: true
 
