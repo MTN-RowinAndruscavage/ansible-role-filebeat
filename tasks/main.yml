@@ -10,6 +10,6 @@
 
 - name: Ensure Filebeat is started and enabled at boot.
   service:
-    name: filebeat
+    name: "{{ filebeat_instance_name }}"
     state: started
     enabled: true

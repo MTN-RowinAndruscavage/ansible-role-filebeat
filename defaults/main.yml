@@ -7,6 +7,10 @@ filebeat_package_state: present
 
 filebeat_create_config: true
 
+# override to create multiple service instances
+filebeat_instance_name: filebeat
+
+
 filebeat_prospectors:
   - type: log
     enabled: true
@@ -39,7 +43,7 @@ filebeat_logging_to_syslog: false
 filebeat_logging_to_files: true
 filebeat_logging_files:
   path: /var/log/filebeat
-  name: filebeat
+  name: "{{ filebeat_instance_name }}"
   keepfiles: 7
 
 filebeat_ssl_dir: /etc/pki/logstash

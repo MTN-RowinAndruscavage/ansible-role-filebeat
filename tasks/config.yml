@@ -2,7 +2,7 @@
 - name: Copy Filebeat configuration.
   template:
     src: filebeat.yml.j2
-    dest: "/etc/filebeat/filebeat.yml"
+    dest: "/etc/filebeat/{{ filebeat_instance_name }}.yml"
     owner: root
     group: root
     mode: 0644
@@ -13,6 +13,30 @@
     path: "{{ filebeat_ssl_dir }}"
     state: directory
   when: filebeat_ssl_key_file
+
+- name: Copy Filebeat systemd service definition
+  template:
+    src: filebeat.service.j2
+    dest: "/lib/systemd/system/{{ filebeat_instance_name }}.service"
+    owner: root
+    group: root
+    mode: 0644
+  register: filebeat_service
+  notify: restart filebeat
+
+- name: Symlink Filebeat systemd service
+  file:
+    src: "/lib/systemd/system/{{ filebeat_instance_name }}.service"
+    dest: "/etc/systemd/system/multi-user.target.wants/{{ filebeat_instance_name }}.service"
+    state: link
+
+- name: Register Filebeat systemd service
+  systemd:
+    name: "{{ filebeat_instance_name }}"
+    enabled: yes
+    state: started
+    daemon_reload: yes
+  when: filebeat_service | changed
 
 - name: Copy SSL key and cert for filebeat.
   copy:
