@@ -10,6 +10,9 @@ filebeat_create_config: true
 # override to create multiple service instances
 filebeat_instance_name: filebeat
 
+# Only one filebeat instance should have modules configured
+filebeat_enable_modules: []
+filebeat_disable_modules: []
 
 filebeat_prospectors:
   - type: log

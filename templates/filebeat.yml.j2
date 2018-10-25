@@ -9,15 +9,18 @@ filebeat.inputs:
   {{ filebeat_prospectors | to_json }}
 
 
+{# Only one filebeat instance should have modules enabled #}
+{% if filebeat_enable_modules|length > 0 %}
 #============================= Filebeat modules ===============================
 
-filebeat.config.modules:
-  # Glob pattern for configuration loading
-  path: ${path.config}/modules.d/*.yml
+filebeat.config:
+  modules:
+    # Glob pattern for configuration loading
+    path: ${path.config}/modules.d/*.yml
 
-  # Set to true to enable config reloading
-  reload.enabled: false
-
+    # Set to true to enable config reloading
+    reload.enabled: false
+{% endif %}
 #============================== Kibana =====================================
 
 # Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.

@@ -48,3 +48,19 @@
     - "{{ filebeat_ssl_certificate_file }}"
   notify: restart filebeat
   when: filebeat_ssl_key_file and filebeat_ssl_certificate_file
+
+- name: Enable filebeat modules
+  shell: >-
+    filebeat modules enable {{ item }}
+  args:
+    creates: /etc/filebeat/modules.d/{{ item }}.yml
+  notify: restart filebeat
+  with_items: "{{ filebeat_enable_modules }}"
+
+- name: Disable filebeat modules
+  shell: >-
+    filebeat modules disable {{ item }}
+  args:
+    creates: /etc/filebeat/modules.d/{{ item }}.yml.disabled
+  notify: restart filebeat
+  with_items: "{{ filebeat_disable_modules }}"
