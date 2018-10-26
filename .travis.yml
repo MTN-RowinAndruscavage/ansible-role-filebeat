@@ -8,12 +8,13 @@ env:
   matrix:
     - MOLECULE_DISTRO: centos7
       MOLECULE_DOCKER_COMMAND: /usr/lib/systemd/systemd
-    # geerlingguy.java installs too new version on ubuntu1804
-    # - MOLECULE_DISTRO: ubuntu1804
-    # geerlingguy.logstash fails on ubuntu 16.04
-    # - MOLECULE_DISTRO: ubuntu1604
-    # geerlingguy.java install too old version on ubuntu 1404
-    # - MOLECULE_DISTRO: ubuntu1404
+
+      # geerlingguy.java installs too new version on ubuntu1804
+      # - MOLECULE_DISTRO: ubuntu1804
+      # geerlingguy.logstash fails on ubuntu 16.04
+      # - MOLECULE_DISTRO: ubuntu1604
+      # geerlingguy.java install too old version on ubuntu 1404
+      # - MOLECULE_DISTRO: ubuntu1404
 
 install:
   # Install test dependencies.
