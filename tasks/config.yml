@@ -33,9 +33,9 @@
 - name: Register Filebeat systemd service
   systemd:
     name: "{{ filebeat_instance_name }}"
-    enabled: True
+    enabled: true
     state: started
-    daemon_reload: True
+    daemon_reload: true
   when: filebeat_service | changed
 
 - name: Copy SSL key and cert for filebeat.
