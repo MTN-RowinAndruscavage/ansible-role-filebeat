@@ -25,7 +25,7 @@
 
 # Ansible Role: Filebeat for ELK Stack
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-filebeat.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-filebeat)
+[![Build Status](https://travis-ci.org/MTN-RowinAndruscavage/ansible-role-filebeat.svg?branch=master)](https://travis-ci.org/MTN-RowinAndruscavage/ansible-role-filebeat)
 
 An Ansible Role that installs [Filebeat](https://www.elastic.co/products/beats/filebeat) on RedHat/CentOS or Debian/Ubuntu.
 
@@ -42,7 +42,7 @@ Available variables are listed below, along with default values (see `defaults/m
 Whether to create the Filebeat configuration file and handle the copying of SSL key and cert for filebeat. If you prefer to create a configuration file yourself you can set this to `false`.
 
     filebeat_prospectors:
-      - input_type: log
+      - type: log
         paths:
           - "/var/log/*.log"
 
@@ -104,6 +104,7 @@ None.
 ## License
 
 MIT / BSD
+
 
 ## Author Information
 

@@ -11,4 +11,9 @@
   apt_repository:
     repo: 'deb https://artifacts.elastic.co/packages/6.x/apt stable main'
     state: present
-    update_cache: yes
+    update_cache: true
+
+- name: Install Filebeat.
+  apt:
+    name: filebeat{% if filebeat_version is defined and filebeat_version != "" %}={{ filebeat_version }}{% endif %}
+    state: "{{ filebeat_package_state }}"
