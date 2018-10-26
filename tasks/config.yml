@@ -54,6 +54,7 @@
     filebeat modules enable {{ item }}
   args:
     creates: /etc/filebeat/modules.d/{{ item }}.yml
+  tags: skip_ansible_lint
   notify: restart filebeat
   with_items: "{{ filebeat_enable_modules }}"
 
@@ -62,5 +63,6 @@
     filebeat modules disable {{ item }}
   args:
     creates: /etc/filebeat/modules.d/{{ item }}.yml.disabled
+  tags: skip_ansible_lint
   notify: restart filebeat
   with_items: "{{ filebeat_disable_modules }}"
