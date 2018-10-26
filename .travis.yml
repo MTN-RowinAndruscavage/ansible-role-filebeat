@@ -10,7 +10,9 @@ env:
       MOLECULE_DOCKER_COMMAND: /usr/lib/systemd/systemd
     # geerlingguy.java installs wrong version on ubuntu1804
     # - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: ubuntu1604
+    # geerlingguy.logstash fails on ubuntu 16.04
+    # - MOLECULE_DISTRO: ubuntu1604
+    - MOLECULE_DISTRO: ubuntu1404
 
 install:
   # Install test dependencies.
