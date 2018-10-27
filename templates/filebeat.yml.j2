@@ -22,10 +22,8 @@ filebeat.config:
     reload.enabled: false
 {% endif %}
 
-
 #============================= Processors ==================================
 {{ filebeat_processors_conf | to_nice_yaml }}
-
 
 #============================== Kibana =====================================
 
