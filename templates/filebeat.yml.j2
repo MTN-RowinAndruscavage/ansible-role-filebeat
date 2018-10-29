@@ -39,11 +39,10 @@ setup.kibana:
 
 #================================ Outputs =====================================
 
-# Multiple outputs may be used.
-output:
+# Only a single output may be defined.
 {% if filebeat_output_elasticsearch_enabled %}
-  ### Elasticsearch as output
-  elasticsearch:
+### Elasticsearch as output
+output.elasticsearch:
     # Array of hosts to connect to.
     hosts: {{ filebeat_output_elasticsearch_hosts | to_json }}
 
@@ -82,8 +81,8 @@ output:
 {% endif %}
 
 {% if filebeat_output_logstash_enabled %}
-  ### Logstash as output
-  logstash:
+### Logstash as output
+output.logstash:
     # The Logstash hosts
     hosts: {{ filebeat_output_logstash_hosts | to_json }}
 {% if filebeat_ssl_enabled %}
@@ -119,7 +118,6 @@ output:
 {% endif %}
 
 {{ filebeat_output_kafka_conf | to_nice_yaml }}
-
 
 #================================ Logging =====================================
 

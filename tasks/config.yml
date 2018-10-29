@@ -36,7 +36,7 @@
     enabled: true
     state: started
     daemon_reload: true
-  when: filebeat_service | changed
+  when: filebeat_service is changed
 
 - name: Copy SSL key and cert for filebeat.
   copy:
