@@ -118,6 +118,9 @@ output:
 {% endif %}
 {% endif %}
 
+{{ filebeat_output_kafka_conf | to_nice_yaml }}
+
+
 #================================ Logging =====================================
 
 logging.level: {{ filebeat_logging_level }}

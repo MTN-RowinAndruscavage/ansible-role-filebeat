@@ -27,6 +27,7 @@ filebeat_prospectors:
       - "/var/log/syslog"
 
 filebeat_processors_conf: {}
+filebeat_output_kafka_conf: {}
 
 filebeat_output_elasticsearch_enabled: false
 filebeat_output_elasticsearch_hosts:
