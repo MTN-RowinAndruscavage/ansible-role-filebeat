@@ -23,13 +23,16 @@ filebeat.config:
 {% endif %}
 
 #============================= Processors ==================================
+{% if filebeat_processors_conf is defined %}
 {{ filebeat_processors_conf | to_nice_yaml }}
+{% endif %}
 
 #============================== Kibana =====================================
 
-# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
-# This requires a Kibana endpoint configuration.
+{% if filebeat_setup_kibana_conf is defined %}
+# Beats 6.x can setup kibana dashboards
 {{ filebeat_setup_kibana_conf | to_nice_yaml }}
+{% endif %}
 
 #================================ Outputs =====================================
 
@@ -111,7 +114,9 @@ output.logstash:
 {% endif %}
 {% endif %}
 
+{% if filebeat_output_kafka_conf is defined %}
 {{ filebeat_output_kafka_conf | to_nice_yaml }}
+{% endif %}
 
 #================================ Logging =====================================
 

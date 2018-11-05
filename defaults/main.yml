@@ -26,8 +26,11 @@ filebeat_prospectors:
       - "/var/log/messages"
       - "/var/log/syslog"
 
-filebeat_processors_conf:
-filebeat_output_kafka_conf:
+# filebeat_processors_conf:
+#   processors:
+# filebeat_output_kafka_conf:
+#   setup.kibana:
+#     host:
 
 filebeat_output_elasticsearch_enabled: false
 filebeat_output_elasticsearch_hosts:
