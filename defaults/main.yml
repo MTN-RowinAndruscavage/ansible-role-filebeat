@@ -40,6 +40,7 @@ filebeat_output_logstash_enabled: true
 filebeat_output_logstash_hosts:
   - "localhost:5044"
 
+filebeat_setup_dashboards: false
 filebeat_setup_kibana_conf:
   setup.kibana:
     host: localhost:5601

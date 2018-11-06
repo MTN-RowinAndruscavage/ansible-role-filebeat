@@ -29,6 +29,9 @@ filebeat.config:
 
 #============================== Kibana =====================================
 
+{% if filebeat_setup_dashboards %}
+setup.dashboards.enabled: true
+{% endif %}
 {% if filebeat_setup_kibana_conf is defined %}
 # Beats 6.x can setup kibana dashboards
 {{ filebeat_setup_kibana_conf | to_nice_yaml }}
