@@ -51,7 +51,7 @@
 
 - name: Enable filebeat modules
   shell: >-
-    filebeat modules enable {{ item }}
+    filebeat -c /etc/filebeat/{{ filebeat_instance_name }}.yml modules enable {{ item }}
   args:
     creates: /etc/filebeat/modules.d/{{ item }}.yml
   tags: skip_ansible_lint
