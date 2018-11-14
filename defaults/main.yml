@@ -2,7 +2,7 @@
 # Override to "latest" to upgrade
 filebeat_package_state: present
 
-filebeat_version: 6.4.1
+filebeat_version: 6.4.3
 beats_major_version: "{{ filebeat_version[0] }}.x"
 repo_urls:
   "1.x": "https://packages.elastic.co/beats/yum/el/$basearch"
