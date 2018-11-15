@@ -1,15 +1,19 @@
 # ElasticStack Filebeat role
+
 forked from Jeff Geerling & CUSystem
+
 should have forked from the elastic.beats role, which is heavily borrowed from
 
 * Set up multiple independent filebeat instances (filebeat 6.x removed the ability to have multiple outputs due to bugs)
 
-    # Create a new filebeat service / config / registry / logfile
+Create a new filebeat service / config / registry / logfile:
+
     filebeat_instance_name: filebeat_kafka
 
 * Rudimentary version pinning (only for new installs. ansible yum/apt modules refuse to update packages that already exist to any version other than latest)
 
-    # deploy the version with which your configs are ready and tested
+Deploy the version with which your configs are ready and tested:
+
     filebeat_version: 6.4.3
 
 * Added modules configuration
