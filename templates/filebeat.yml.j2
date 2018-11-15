@@ -23,27 +23,31 @@ filebeat.config:
 {% endif %}
 
 #============================= Processors ==================================
+{% if filebeat_processors_conf is defined %}
 {{ filebeat_processors_conf | to_nice_yaml }}
+{% endif %}
 
 #============================== Kibana =====================================
 
-# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
-# This requires a Kibana endpoint configuration.
-setup.kibana:
+{% if filebeat_setup_dashboards %}
+# Restore dashboards to kibana each time service starts
+setup.dashboards.enabled: true
+{% else %}
+# Load dashboards to kibana with:
+#    filebeat -c /etc/{{ filebeat_instance_name }}.yml setup -e
+{% endif %}
 
-  # Kibana Host
-  # Scheme and port can be left out and will be set to the default (http and 5601)
-  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
-  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-  host: "{{ filebeat_kibana_url }}"
+{% if filebeat_setup_kibana_conf is defined %}
+# Beats 6.x can setup kibana dashboards
+{{ filebeat_setup_kibana_conf | to_nice_yaml }}
+{% endif %}
 
 #================================ Outputs =====================================
 
-# Multiple outputs may be used.
-output:
+# Only a single output may be defined.
 {% if filebeat_output_elasticsearch_enabled %}
-  ### Elasticsearch as output
-  elasticsearch:
+### Elasticsearch as output
+output.elasticsearch:
     # Array of hosts to connect to.
     hosts: {{ filebeat_output_elasticsearch_hosts | to_json }}
 
@@ -82,8 +86,8 @@ output:
 {% endif %}
 
 {% if filebeat_output_logstash_enabled %}
-  ### Logstash as output
-  logstash:
+### Logstash as output
+output.logstash:
     # The Logstash hosts
     hosts: {{ filebeat_output_logstash_hosts | to_json }}
 {% if filebeat_ssl_enabled %}
@@ -116,6 +120,10 @@ output:
 {% if filebeat_ssl_supported_protocols %}
     ssl.supported_protocols: {{ filebeat_ssl_supported_protocols | to_json}}
 {% endif %}
+{% endif %}
+
+{% if filebeat_output_kafka_conf is defined %}
+{{ filebeat_output_kafka_conf | to_nice_yaml }}
 {% endif %}
 
 #================================ Logging =====================================
