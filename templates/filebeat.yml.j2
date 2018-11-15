@@ -30,8 +30,13 @@ filebeat.config:
 #============================== Kibana =====================================
 
 {% if filebeat_setup_dashboards %}
+# Restore dashboards to kibana each time service starts
 setup.dashboards.enabled: true
+{% else %}
+# Load dashboards to kibana with:
+#    filebeat -c /etc/{{ filebeat_instance_name }}.yml setup -e
 {% endif %}
+
 {% if filebeat_setup_kibana_conf is defined %}
 # Beats 6.x can setup kibana dashboards
 {{ filebeat_setup_kibana_conf | to_nice_yaml }}

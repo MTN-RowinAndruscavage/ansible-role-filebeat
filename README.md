@@ -1,13 +1,33 @@
-# Modified Filebeat Role, forked from Jeff Geerling
+# ElasticStack Filebeat role
+forked from Jeff Geerling & CUSystem
+should have forked from the elastic.beats role, which is heavily borrowed from
+
+* Set up multiple independent filebeat instances (filebeat 6.x removed the ability to have multiple outputs due to bugs)
+
+    # Create a new filebeat service / config / registry / logfile
+    filebeat_instance_name: filebeat_kafka
+
+* Rudimentary version pinning (only for new installs. ansible yum/apt modules refuse to update packages that already exist to any version other than latest)
+
+    # deploy the version with which your configs are ready and tested
+    filebeat_version: 6.4.3
+
+* Added modules configuration
+
+* Added kibana dashboard configuration
+
+* Added kafka output configuration
 
 
-## Updated for Filebeat 6.x
+From the CUSystem fork:
 
-## Created a Windows branch
+* Updated for Filebeat 6.x
 
-## Added fine tuning for SSL for a generated filebeat.yml file.
+* Created a Windows branch
 
-## Added following SSL options for the generated filebeat.yml file, for which there are no defaults provided:
+* Added fine tuning for SSL for a generated filebeat.yml file.
+
+* Added following SSL options for the generated filebeat.yml file, for which there are no defaults provided:
 
     filebeat_ssl_certificate_authorities: #Collection
     filebeat_ssl_verification_mode: # none, full
@@ -19,8 +39,7 @@
     filebeat_ssl_enabled: # true, false
 
 
-# Original README:
-
+# Original geerlingguy README:
 
 
 # Ansible Role: Filebeat for ELK Stack
