@@ -1,0 +1,3 @@
+skip_list:
+  # [E602] Don't compare to empty string
+  - '602'

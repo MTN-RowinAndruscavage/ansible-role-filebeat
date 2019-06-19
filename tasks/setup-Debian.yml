@@ -15,5 +15,9 @@
 
 - name: Install Filebeat.
   apt:
-    name: filebeat{% if filebeat_version is defined and filebeat_version != "" %}={{ filebeat_version }}{% endif %}
+    name: >-
+      filebeat
+      {%- if filebeat_version is defined and filebeat_version != "" -%}
+      ={{ filebeat_version }}
+      {%- endif %}
     state: "{{ filebeat_package_state }}"
