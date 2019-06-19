@@ -74,3 +74,4 @@ filebeat_ssl_key_passphrase:
 filebeat_ssl_supported_protocols:
 filebeat_ssl_cipher_suites:  # Collection - See docs for available types
 filebeat_ssl_curve_types:  # Collection - [P-256, P-384, P521]
+filebeat_ssl_enabled:  # true, false
