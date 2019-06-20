@@ -27,7 +27,8 @@
 - name: Symlink Filebeat systemd service
   file:
     src: "/lib/systemd/system/{{ filebeat_instance_name }}.service"
-    dest: "/etc/systemd/system/multi-user.target.wants/{{ filebeat_instance_name }}.service"
+    dest: "/etc/systemd/system/multi-user.target.wants/\
+      {{ filebeat_instance_name }}.service"
     state: link
 
 - name: Register Filebeat systemd service
@@ -51,7 +52,8 @@
 
 - name: Enable filebeat modules
   shell: >-
-    filebeat -c /etc/filebeat/{{ filebeat_instance_name }}.yml modules enable {{ item }}
+    filebeat -c /etc/filebeat/{{ filebeat_instance_name }}.yml
+    modules enable {{ item }}
   args:
     creates: /etc/filebeat/modules.d/{{ item }}.yml
   tags: skip_ansible_lint
