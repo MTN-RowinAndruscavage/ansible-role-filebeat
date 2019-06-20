@@ -11,9 +11,10 @@
     mode: 0644
   register: filebeat_repo
 
+
 # WORKAROUND: update_cache below doesn't refresh the repo
 - name: Clear yum cache
-  shell: yum clean all # noqa 303 305
+  shell: yum clean all  # noqa 303 305
   when: filebeat_repo is changed
 
 - name: Install Filebeat.
@@ -28,7 +29,8 @@
     update_cache: "{{ filebeat_repo is changed }}"
   register: filebeat_install
 
+
 # WORKAROUND: systemctl restart filebeat_* hangs when filebeat is upgraded
 - name: Kill existing filebeat processes
-  shell: pgrep filebeat | xargs kill -9 # noqa 306
+  shell: pgrep filebeat | xargs kill -9  # noqa 306
   when: filebeat_install is changed
