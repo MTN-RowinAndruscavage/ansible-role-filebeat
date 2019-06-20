@@ -13,7 +13,7 @@
 
 # WORKAROUND: update_cache below doesn't refresh the repo
 - name: Clear yum cache
-  shell: yum clean all # noqa
+  shell: yum clean all # noqa 303 305
   when: filebeat_repo is changed
 
 - name: Install Filebeat.
@@ -30,5 +30,5 @@
 
 # WORKAROUND: systemctl restart filebeat_* hangs when filebeat is upgraded
 - name: Kill existing filebeat processes
-  shell: pgrep filebeat | xargs kill -9 # noqa
+  shell: pgrep filebeat | xargs kill -9 # noqa 306
   when: filebeat_install is changed
