@@ -33,4 +33,5 @@
 # WORKAROUND: systemctl restart filebeat_* hangs when filebeat is upgraded
 - name: Kill existing filebeat processes
   shell: pgrep filebeat | xargs kill -9  # noqa 306
+  failed_when: false
   when: filebeat_install is changed
