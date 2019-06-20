@@ -28,7 +28,7 @@
   file:
     src: "/lib/systemd/system/{{ filebeat_instance_name }}.service"
     dest: "/etc/systemd/system/multi-user.target.wants/\
-      {{- filebeat_instance_name }}.service"
+      {{ filebeat_instance_name }}.service"
     state: link
 
 - name: Register Filebeat systemd service
