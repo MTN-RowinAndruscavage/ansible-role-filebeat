@@ -53,10 +53,12 @@ output.elasticsearch:
 
     # Proxy server URL
     # proxy_url: http://proxy:3128
- {% if filebeat_ssl_enabled %}
-    # If any 'ssl' parameters are included, defaults to 'true', otherwise defaults to 'false'.  
-    # Can force true or false independent of ssl section settings
-    ssl.enabled: {{ filebeat_ssl_enabled }}
+{% if filebeat_protocol %}
+    protocol: {{ filebeat_protocol }}
+{% endif %}
+{% if filebeat_es_username %}
+    username: {{ filebeat_es_username }}
+    password: {{ filebeat_es_password }}
 {% endif %}
 {% if filebeat_ssl_certificate_authorities %}
     ssl.certificate_authorities: {{ filebeat_ssl_certificate_authorities }}
