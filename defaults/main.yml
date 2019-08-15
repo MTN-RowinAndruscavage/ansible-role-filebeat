@@ -42,9 +42,9 @@ filebeat_output_logstash_hosts:
   - "localhost:5044"
 
 filebeat_setup_dashboards: false
-filebeat_setup_kibana_conf:
-  setup.kibana:
-    host: localhost:5601
+# filebeat_setup_kibana_conf:
+#   setup.kibana:
+#     host: localhost:5601
 
 # Sets log level. The default log level is info.
 # Available log levels are: error, warning, info, debug
