@@ -1,5 +1,6 @@
 ---
-- name: restart filebeat
-  service:
+- name: restart {{ filebeat_instance_name }}
+  listen: restart filebeat
+  systemd:
     name: "{{ filebeat_instance_name }}"
     state: restarted

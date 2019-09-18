@@ -29,9 +29,3 @@
     update_cache: "{{ filebeat_repo is changed }}"
   register: filebeat_install
 
-
-# WORKAROUND: systemctl restart filebeat_* hangs when filebeat is upgraded
-- name: Kill existing filebeat processes
-  shell: pgrep filebeat | xargs kill -9  # noqa 306
-  failed_when: false
-  when: filebeat_install is changed
