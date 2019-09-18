@@ -14,7 +14,18 @@ Create a new filebeat service / config / registry / logfile:
 
 Deploy the version with which your configs are ready and tested:
 
-    filebeat_version: 6.4.3
+    filebeat_version: 6.8.2
+
+Install filebeat package from a URL rather than the elastic.co repo
+Useful for servers without internet access.
+
+    filebeat_rpm_url: http://server/repository/filebeat-6.8.2-x86_64.rpm
+    filebeat_deb_url:
+
+Force kill of all filebeat process, useful after some upgrades where systemd
+has trouble restarting the services itself
+
+    -e filebeat_force_restart=true
 
 * Added modules configuration
 

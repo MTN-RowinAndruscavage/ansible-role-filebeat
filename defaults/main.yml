@@ -2,13 +2,18 @@
 # Override to "latest" to upgrade
 filebeat_package_state: present
 
-filebeat_version: 6.5.4
+filebeat_version: 6.8.2
 beats_major_version: "{{ filebeat_version[0] }}.x"
 repo_urls:
   "1.x": "https://packages.elastic.co/beats/yum/el/$basearch"
   "5.x": "https://artifacts.elastic.co/packages/5.x/yum"
   "6.x": "https://artifacts.elastic.co/packages/6.x/yum"
   "7.x": "https://artifacts.elastic.co/packages/7.x/yum"
+
+## Define a download location to one of these to avoid setting up repos
+## useful for installing from internal servers without internet access
+# filebeat_rpm_url:
+# filebeat_dpkg_url:
 
 filebeat_create_config: true
 
