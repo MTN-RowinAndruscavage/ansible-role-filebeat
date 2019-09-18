@@ -10,7 +10,7 @@
     name: "{{ filebeat_rpm_url }}"
     state: present
     disable_gpg_check: true
-    validate_certs: no
+    validate_certs: false
   register: filebeat_install
   when:
     - ansible_os_family == 'RedHat'
